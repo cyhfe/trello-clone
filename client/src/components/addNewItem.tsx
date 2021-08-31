@@ -37,9 +37,9 @@ const AddNewItem = (props: AddNewItemProps) => {
   }
 
   if (showForm) {
-    return <NewItemForm onCancel={handleCancel} onAdd={props.onAdd}/>
+    return <NewItemForm onCancel={handleCancel} onAdd={props.onAdd} />
   }
-  
+
   return (
     <Container>
       <AddItemButton

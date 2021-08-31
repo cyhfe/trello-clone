@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
-
+import { useFocus } from '../utils/useFocus'
 const Container = styled.div`
   min-width: 276px;
   display: flex;
@@ -66,9 +66,10 @@ type NewItemFormProps = {
 
 const NewItemForm = ({ onCancel, onAdd }: NewItemFormProps) => {
   const [text, setText] = useState('')
+  const inputRef = useFocus()
   return (
     <Container>
-      <Input type="text" value={text} onChange={(e) => setText(e.target.value)} />
+      <Input type="text" value={text} onChange={(e) => setText(e.target.value)} ref={inputRef} />
       <Control>
         <Button primary onClick={() => onAdd(text)}>
           Create
