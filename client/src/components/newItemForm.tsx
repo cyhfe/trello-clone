@@ -69,7 +69,13 @@ const NewItemForm = ({ onCancel, onAdd }: NewItemFormProps) => {
   const inputRef = useFocus()
   return (
     <Container>
-      <Input type="text" value={text} onChange={(e) => setText(e.target.value)} ref={inputRef} />
+      <Input
+        type="text"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        ref={inputRef}
+        onKeyPress={() => onAdd(text)}
+      />
       <Control>
         <Button primary onClick={() => onAdd(text)}>
           Create
