@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import Card from "./card";
+import AddNewItem from "./addNewItem";
 
 const ColumnWrap = styled.div`
-  min-width: 300px;
+  min-width: 320px;
   padding-right: 20px;
 `;
 
@@ -18,15 +19,17 @@ const Title = styled.div`
   margin-bottom: 8px;
 `;
 
-const Column = () => {
+type ColumnProps = {
+  text: string,
+  children: React.ReactNode
+}
+
+const Column = ({text, children}: ColumnProps) => {
   return (
     <ColumnWrap>
       <ColumnContainer>
-      <Title>title</Title>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+      <Title>{text}</Title>
+      {children}
       </ColumnContainer>
     </ColumnWrap>
   );
