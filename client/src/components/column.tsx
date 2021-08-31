@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Card from "./card";
-import AddNewItem from "./addNewItem";
 
 const ColumnWrap = styled.div`
   min-width: 320px;
@@ -21,7 +19,7 @@ const Title = styled.div`
 
 type ColumnProps = {
   text: string,
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 const Column = ({text, children}: ColumnProps) => {
