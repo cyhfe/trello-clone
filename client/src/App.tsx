@@ -6,6 +6,7 @@ import Column from "./components/column";
 import AddNewItem from "./components/addNewItem";
 
 import { useAppState } from "./state/AppStateContext";
+import { addList } from "./state/actions";
 
 const AppContainer = styled.div`
   height: 100%;
@@ -15,14 +16,23 @@ const AppContainer = styled.div`
   padding: 20px;
 `;
 
+const AddListContainer = styled.div`
+  padding-right: 20px;
+`;
+
 function App() {
-  const { lists } = useAppState();
+  const { lists, dispatch } = useAppState();
   return (
     <AppContainer>
       {lists.map((list) => {
         return <Column text={list.text} id={list.id} key={list.id} />;
       })}
-      <AddNewItem onAdd={(text) => console.log(text)} toggleButtonText="+ add another list" />
+      <AddListContainer>
+        <AddNewItem
+          onAdd={(text) => dispatch(addList(text))}
+          toggleButtonText="+ add another list"
+        />
+      </AddListContainer>
     </AppContainer>
   );
 }

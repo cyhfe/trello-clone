@@ -72,6 +72,11 @@ const NewItemForm = ({ onCancel, onAdd }: NewItemFormProps) => {
       onAdd(text);
     }
   };
+  const handleClickCreate = (text: string) => {
+    if(!text) return
+    onAdd(text)
+    // setText('')
+  }
   return (
     <Container>
       <Input
@@ -82,7 +87,7 @@ const NewItemForm = ({ onCancel, onAdd }: NewItemFormProps) => {
         onKeyPress={handleAddText}
       />
       <Control>
-        <Button primary onClick={() => onAdd(text)}>
+        <Button primary onClick={() => handleClickCreate(text)}>
           Create
         </Button>
         <Button danger onClick={onCancel}>

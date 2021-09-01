@@ -25,7 +25,7 @@ const AddItemButton = styled.div<AddItemButtomProps>`
 
 type AddNewItemProps = {
   toggleButtonText: string;
-  onAdd(text: "string"): void;
+  onAdd(text: string): void;
   dark?: boolean;
 };
 
@@ -36,8 +36,13 @@ const AddNewItem = (props: AddNewItemProps) => {
     setShowForm(false);
   };
 
+  const handleAdd = (text: string) => {
+    setShowForm(false);
+    props.onAdd(text);
+  };
+  
   if (showForm) {
-    return <NewItemForm onCancel={handleCancel} onAdd={props.onAdd} />;
+    return <NewItemForm onCancel={handleCancel} onAdd={handleAdd} />;
   }
 
   return (
@@ -46,7 +51,8 @@ const AddNewItem = (props: AddNewItemProps) => {
         dark={props.dark}
         onClick={() => {
           setShowForm(true);
-        }}>
+        }}
+      >
         {props.toggleButtonText}
       </AddItemButton>
     </Container>

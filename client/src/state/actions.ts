@@ -1,5 +1,6 @@
 const ADD_LIST = "ADD_LIST";
 const ADD_TASK = "ADD_TASK";
+const MOVE_LIST = "MOVE_LIST";
 
 type AddListAction = {
   type: "ADD_LIST";
@@ -13,7 +14,15 @@ type AddTaskAction = {
     text: string;
   };
 };
-export type Action = AddListAction | AddTaskAction;
+
+type MoveListAction = {
+  type: "MOVE_LIST";
+  payload: {
+    draggedId: string;
+    hoverId: string;
+  };
+};
+export type Action = AddListAction | AddTaskAction | MoveListAction;
 
 export const addList = (text: string): Action => {
   return {
@@ -28,6 +37,16 @@ export const addTask = (text: string, listId: string): Action => {
     payload: {
       text,
       listId,
+    },
+  };
+};
+
+export const moveList = (draggedId: string, hoverId: string): Action => {
+  return {
+    type: MOVE_LIST,
+    payload: {
+      draggedId,
+      hoverId,
     },
   };
 };
