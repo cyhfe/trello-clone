@@ -20,27 +20,21 @@ const Title = styled.div`
 `;
 
 type ColumnProps = {
-  id: string
-  text: string,
-}
+  id: string;
+  text: string;
+};
 
-const Column = ({id, text}: ColumnProps) => {
-  const {getTasksByListId} = useAppState()
-  const tasks = getTasksByListId(id)
+const Column = ({ id, text }: ColumnProps) => {
+  const { getTasksByListId } = useAppState();
+  const tasks = getTasksByListId(id);
   return (
     <ColumnWrap>
       <ColumnContainer>
-      <Title>{text}</Title>
-      {tasks.map(task => {
-        return(
-          <Card key={task.id} text={task.text} />
-        )
-      })}
-      <AddNewItem 
-        toggleButtonText={'+ add another item'}
-        onAdd={console.log}
-        dark
-      />
+        <Title>{text}</Title>
+        {tasks.map((task) => {
+          return <Card key={task.id} text={task.text} />;
+        })}
+        <AddNewItem toggleButtonText={"+ add another item"} onAdd={console.log} dark />
       </ColumnContainer>
     </ColumnWrap>
   );

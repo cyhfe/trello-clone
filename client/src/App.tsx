@@ -20,14 +20,9 @@ function App() {
   return (
     <AppContainer>
       {lists.map((list) => {
-        return (
-          <Column text={list.text} id={list.id} key={list.id}/>
-        );
+        return <Column text={list.text} id={list.id} key={list.id} />;
       })}
-      <AddNewItem
-        onAdd={(text) => console.log(text)}
-        toggleButtonText="+ add another list"
-      />
+      <AddNewItem onAdd={(text) => console.log(text)} toggleButtonText="+ add another list" />
     </AppContainer>
   );
 }

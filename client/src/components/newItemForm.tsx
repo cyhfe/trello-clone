@@ -34,8 +34,8 @@ const Button = styled.button<ButtonProps>`
   user-select: none;
   border: 1px solid transparent;
   border-radius: 3px;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
   padding: 0.15rem 0.35rem;
   margin-left: 10px;
   ${(props) =>

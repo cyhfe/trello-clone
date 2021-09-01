@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import NewItemForm from './newItemForm'
-import styled from 'styled-components'
+import React, { useState } from "react";
+import NewItemForm from "./newItemForm";
+import styled from "styled-components";
 
 const Container = styled.div`
   min-width: 276px;
@@ -11,33 +11,33 @@ const Container = styled.div`
   }
   border-radius: 3px;
   cursor: pointer;
-`
+`;
 
 type AddItemButtomProps = {
-  dark?: boolean
-}
+  dark?: boolean;
+};
 
 const AddItemButton = styled.div<AddItemButtomProps>`
-  color: ${(props) => (props.dark ? '#000' : '#fff')};
+  color: ${(props) => (props.dark ? "#000" : "#fff")};
   text-align: left;
   transition: background 85ms ease-in;
-`
+`;
 
 type AddNewItemProps = {
-  toggleButtonText: string
-  onAdd(text: 'string'): void
-  dark?: boolean
-}
+  toggleButtonText: string;
+  onAdd(text: "string"): void;
+  dark?: boolean;
+};
 
 const AddNewItem = (props: AddNewItemProps) => {
-  const [showForm, setShowForm] = useState<boolean>(false)
+  const [showForm, setShowForm] = useState<boolean>(false);
 
   const handleCancel = () => {
-    setShowForm(false)
-  }
+    setShowForm(false);
+  };
 
   if (showForm) {
-    return <NewItemForm onCancel={handleCancel} onAdd={props.onAdd} />
+    return <NewItemForm onCancel={handleCancel} onAdd={props.onAdd} />;
   }
 
   return (
@@ -45,12 +45,12 @@ const AddNewItem = (props: AddNewItemProps) => {
       <AddItemButton
         dark={props.dark}
         onClick={() => {
-          setShowForm(true)
+          setShowForm(true);
         }}>
         {props.toggleButtonText}
       </AddItemButton>
     </Container>
-  )
-}
+  );
+};
 
-export default AddNewItem
+export default AddNewItem;
