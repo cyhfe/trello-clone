@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-
+import { useAppState } from "../state/AppStateContext";
+import Card from "./card";
+import AddNewItem from "./addNewItem";
 const ColumnWrap = styled.div`
   min-width: 320px;
   padding-right: 20px;
@@ -18,16 +20,27 @@ const Title = styled.div`
 `;
 
 type ColumnProps = {
+  id: string
   text: string,
-  children?: React.ReactNode
 }
 
-const Column = ({text, children}: ColumnProps) => {
+const Column = ({id, text}: ColumnProps) => {
+  const {getTasksByListId} = useAppState()
+  const tasks = getTasksByListId(id)
   return (
     <ColumnWrap>
       <ColumnContainer>
       <Title>{text}</Title>
-      {children}
+      {tasks.map(task => {
+        return(
+          <Card key={task.id} text={task.text} />
+        )
+      })}
+      <AddNewItem 
+        toggleButtonText={'+ add another item'}
+        onAdd={console.log}
+        dark
+      />
       </ColumnContainer>
     </ColumnWrap>
   );

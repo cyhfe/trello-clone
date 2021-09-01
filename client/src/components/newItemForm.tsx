@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import styled, { css } from 'styled-components'
-import { useFocus } from '../utils/useFocus'
+import React, { useState } from "react";
+import styled, { css } from "styled-components";
+import { useFocus } from "../utils/useFocus";
 const Container = styled.div`
   min-width: 276px;
   display: flex;
   flex-direction: column;
-`
+`;
 
 const Input = styled.input`
   padding: 8px;
@@ -18,12 +18,12 @@ const Input = styled.input`
     box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
   }
   margin-bottom: 0.5rem;
-`
+`;
 
 type ButtonProps = {
-  primary?: boolean
-  danger?: boolean
-}
+  primary?: boolean;
+  danger?: boolean;
+};
 
 const Button = styled.button<ButtonProps>`
   display: inline-block;
@@ -34,8 +34,8 @@ const Button = styled.button<ButtonProps>`
   user-select: none;
   border: 1px solid transparent;
   border-radius: 3px;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-    box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   padding: 0.15rem 0.35rem;
   margin-left: 10px;
   ${(props) =>
@@ -52,21 +52,26 @@ const Button = styled.button<ButtonProps>`
       background-color: #ff4d4f;
       border-color: #ff4d4f;
     `}
-`
+`;
 
 const Control = styled.div`
   display: flex;
   justify-content: flex-end;
-`
+`;
 
 type NewItemFormProps = {
-  onCancel(): void
-  onAdd(text: string): void
-}
+  onCancel(): void;
+  onAdd(text: string): void;
+};
 
 const NewItemForm = ({ onCancel, onAdd }: NewItemFormProps) => {
-  const [text, setText] = useState('')
-  const inputRef = useFocus()
+  const [text, setText] = useState("");
+  const inputRef = useFocus();
+  const handleAddText = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onAdd(text);
+    }
+  };
   return (
     <Container>
       <Input
@@ -74,7 +79,7 @@ const NewItemForm = ({ onCancel, onAdd }: NewItemFormProps) => {
         value={text}
         onChange={(e) => setText(e.target.value)}
         ref={inputRef}
-        onKeyPress={() => onAdd(text)}
+        onKeyPress={handleAddText}
       />
       <Control>
         <Button primary onClick={() => onAdd(text)}>
@@ -85,7 +90,7 @@ const NewItemForm = ({ onCancel, onAdd }: NewItemFormProps) => {
         </Button>
       </Control>
     </Container>
-  )
-}
+  );
+};
 
-export default NewItemForm
+export default NewItemForm;
