@@ -16,7 +16,7 @@ type CardProps = {
 };
 
 const Card = ({ text }: CardProps) => {
-  return <CardContainer isHidden>{text}</CardContainer>;
+  return <CardContainer>{text}</CardContainer>;
 };
 
 export default Card;

@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import Column from "./components/column";
 import AddNewItem from "./components/addNewItem";
+import { CustomDragLayer } from "./components/customDragLayer";
 
 import { useAppState } from "./state/AppStateContext";
 import { addList } from "./state/actions";
@@ -24,6 +25,7 @@ function App() {
   const { lists, dispatch } = useAppState();
   return (
     <AppContainer>
+      <CustomDragLayer />
       {lists.map((list) => {
         return <Column text={list.text} id={list.id} key={list.id} />;
       })}

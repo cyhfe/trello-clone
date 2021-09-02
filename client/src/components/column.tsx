@@ -11,6 +11,7 @@ import { isHidden } from "../utils/isHidden";
 
 const ColumnWrap = styled.div`
   min-width: 320px;
+  width: 320px;
   padding-right: 20px;
 `;
 
@@ -28,9 +29,10 @@ const Title = styled.div`
 type ColumnProps = {
   id: string;
   text: string;
+  isPreview?: boolean;
 };
 
-const Column = ({ id, text }: ColumnProps) => {
+const Column = ({ id, text, isPreview }: ColumnProps) => {
   const { getTasksByListId, dispatch, draggedItem } = useAppState();
   const tasks = getTasksByListId(id);
   const ref = useRef<HTMLDivElement>(null);
@@ -48,12 +50,19 @@ const Column = ({ id, text }: ColumnProps) => {
   drag(drop(ref));
   return (
     <ColumnWrap>
-      <ColumnContainer ref={ref} isHidden={isHidden(draggedItem, "COLUMN", id)}>
+      <ColumnContainer
+        ref={ref}
+        isHidden={isHidden(draggedItem, "COLUMN", id, isPreview)}
+      >
         <Title>{text}</Title>
         {tasks.map((task) => {
           return <Card key={task.id} text={task.text} />;
         })}
-        <AddNewItem toggleButtonText={"+ add another item"} onAdd={(text) => dispatch(addTask(text, id))} dark />
+        <AddNewItem
+          toggleButtonText={"+ add another item"}
+          onAdd={(text) => dispatch(addTask(text, id))}
+          dark
+        />
       </ColumnContainer>
     </ColumnWrap>
   );
