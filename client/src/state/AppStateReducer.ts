@@ -43,6 +43,14 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
       };
     }
 
+    case "SET_DRAGGED_ITEM": {
+      const draggedItem = action.payload;
+      return {
+        ...state,
+        draggedItem,
+      };
+    }
+
     default:
       return state;
   }

@@ -4,6 +4,7 @@ import { useAppState } from "../state/AppStateContext";
 import Card from "./card";
 import AddNewItem from "./addNewItem";
 import { addTask } from "../state/actions";
+import { useItemDrag } from "../utils/useItemGrag";
 const ColumnWrap = styled.div`
   min-width: 320px;
   padding-right: 20px;

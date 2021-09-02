@@ -1,7 +1,9 @@
+import { DragItem } from "../dragItem";
+
 const ADD_LIST = "ADD_LIST";
 const ADD_TASK = "ADD_TASK";
 const MOVE_LIST = "MOVE_LIST";
-const SET_DRAGGEDITEM = "SET_DRAGGEDITEM";
+const SET_DRAGGED_ITEM = "SET_DRAGGED_ITEM";
 
 type AddListAction = {
   type: "ADD_LIST";
@@ -24,9 +26,12 @@ type MoveListAction = {
   };
 };
 
+type SetDraggedItemAction= {
+  type: 'SET_DRAGGED_ITEM'
+  payload: DragItem | null
+}
 
-
-export type Action = AddListAction | AddTaskAction | MoveListAction;
+export type Action = AddListAction | AddTaskAction | MoveListAction | SetDraggedItemAction
 
 export const addList = (text: string): Action => {
   return {
@@ -54,3 +59,10 @@ export const moveList = (draggedId: string, hoverId: string): Action => {
     },
   };
 };
+
+export const setDraggedItem = (draggedItem: DragItem | null):Action => {
+  return {
+    type: SET_DRAGGED_ITEM,
+    payload: draggedItem
+  }
+}
