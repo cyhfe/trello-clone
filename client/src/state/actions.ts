@@ -1,6 +1,7 @@
 const ADD_LIST = "ADD_LIST";
 const ADD_TASK = "ADD_TASK";
 const MOVE_LIST = "MOVE_LIST";
+const SET_DRAGGEDITEM = "SET_DRAGGEDITEM";
 
 type AddListAction = {
   type: "ADD_LIST";
@@ -22,6 +23,9 @@ type MoveListAction = {
     hoverId: string;
   };
 };
+
+
+
 export type Action = AddListAction | AddTaskAction | MoveListAction;
 
 export const addList = (text: string): Action => {

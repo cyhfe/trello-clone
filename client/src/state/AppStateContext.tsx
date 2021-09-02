@@ -1,6 +1,8 @@
 import { createContext, useContext, useReducer, FC } from "react";
 import { appStateReducer } from "./AppStateReducer";
 import { Action } from "./actions";
+import { DragItem } from "../dragItem";
+
 type Task = {
   id: string;
   text: string;
@@ -14,6 +16,7 @@ type List = {
 
 export type AppState = {
   lists: List[];
+  draggedItem: DragItem | null;
 };
 
 const appData: AppState = {
@@ -34,12 +37,14 @@ const appData: AppState = {
       tasks: [{ id: "c3", text: "Begin to use static typing" }],
     },
   ],
+  draggedItem: null,
 };
 
 type AppStateContextProps = {
   lists: List[];
   getTasksByListId(id: string): Task[];
   dispatch: React.Dispatch<Action>;
+  draggedItem: DragItem | null;
 };
 
 const AppStateContext = createContext<AppStateContextProps>(
@@ -48,12 +53,14 @@ const AppStateContext = createContext<AppStateContextProps>(
 
 export const AppStateProvider: FC = ({ children }) => {
   const [state, dispatch] = useReducer(appStateReducer, appData);
-  const { lists } = state;
+  const { lists, draggedItem } = state;
   const getTasksByListId = (id: string) => {
     return lists.find((list) => list.id === id)?.tasks || [];
   };
   return (
-    <AppStateContext.Provider value={{ lists, getTasksByListId, dispatch }}>
+    <AppStateContext.Provider
+      value={{ lists, draggedItem, getTasksByListId, dispatch }}
+    >
       {children}
     </AppStateContext.Provider>
   );

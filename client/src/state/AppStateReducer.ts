@@ -34,10 +34,11 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
 
     case "MOVE_LIST": {
       const { draggedId, hoverId } = action.payload;
-      const dragIndex = findItemIndexById(state.lists, draggedId)
-      const hoverIndex = findItemIndexById(state.lists, hoverId)
+      const dragIndex = findItemIndexById(state.lists, draggedId);
+      const hoverIndex = findItemIndexById(state.lists, hoverId);
       const newLists = moveItem(state.lists, dragIndex, hoverIndex);
       return {
+        ...state,
         lists: newLists,
       };
     }
