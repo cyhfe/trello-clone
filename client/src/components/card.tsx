@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-
-const CardContainer = styled.div`
+import {DragPreviewContainer} from '../styles'
+const CardContainer = styled(DragPreviewContainer)`
   background-color: #fff;
   cursor: pointer;
   margin-bottom: 0.5rem;
@@ -16,7 +16,7 @@ type CardProps = {
 };
 
 const Card = ({ text }: CardProps) => {
-  return <CardContainer>{text}</CardContainer>;
+  return <CardContainer isHidden>{text}</CardContainer>;
 };
 
 export default Card;
