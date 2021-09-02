@@ -1,12 +1,15 @@
 import React from "react";
+
 import styled from "styled-components";
-import "./App.css";
 
 import Column from "./components/column";
 import AddNewItem from "./components/addNewItem";
 
 import { useAppState } from "./state/AppStateContext";
 import { addList } from "./state/actions";
+
+import "./App.css";
+
 
 const AppContainer = styled.div`
   height: 100%;
