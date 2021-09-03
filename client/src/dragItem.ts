@@ -1,7 +1,14 @@
-export type DragItem = {
+export type ColumnDragItem = {
   id: string;
   text: string;
   type: "COLUMN";
 };
 
-export type ColumnDragItem = DragItem;
+export type CardDrageItem = {
+  id: string;
+  text: string;
+  columnId: string;
+  type: "CARD";
+};
+
+export type DragItem = ColumnDragItem | CardDrageItem

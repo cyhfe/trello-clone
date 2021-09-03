@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
-import {DragPreviewContainer} from '../styles'
+import { useAppState } from "../state/AppStateContext";
+import { DragPreviewContainer } from "../styles";
+import { useItemDrag } from "../utils/useItemGrag";
 const CardContainer = styled(DragPreviewContainer)`
   background-color: #fff;
   cursor: pointer;
@@ -12,11 +14,24 @@ const CardContainer = styled(DragPreviewContainer)`
 `;
 
 type CardProps = {
+  id: string;
+  columnId: string;
   text: string;
+  isPreview?: boolean;
 };
 
-const Card = ({ text }: CardProps) => {
-  return <CardContainer>{text}</CardContainer>;
+const Card = ({ id, text, columnId, isPreview }: CardProps) => {
+  const { draggedItem, dispatch } = useAppState();
+  const ref = useRef<HTMLDivElement>(null);
+  const { drag } = useItemDrag({
+    id,
+    text,
+    columnId,
+    type: "CARD",
+  });
+  
+  drag(ref)
+  return <CardContainer ref={ref} isPreview={isPreview}>{text}</CardContainer>;
 };
 
 export default Card;

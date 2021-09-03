@@ -51,6 +51,12 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
       };
     }
 
+    case "MOVE_TASK": {
+      return {
+        ...state,
+      };
+    }
+
     default:
       return state;
   }

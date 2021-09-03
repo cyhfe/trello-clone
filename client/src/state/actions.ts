@@ -4,6 +4,7 @@ const ADD_LIST = "ADD_LIST";
 const ADD_TASK = "ADD_TASK";
 const MOVE_LIST = "MOVE_LIST";
 const SET_DRAGGED_ITEM = "SET_DRAGGED_ITEM";
+const MOVE_TASK = "MOVE_TASK";
 
 type AddListAction = {
   type: "ADD_LIST";
@@ -26,12 +27,27 @@ type MoveListAction = {
   };
 };
 
-type SetDraggedItemAction= {
-  type: 'SET_DRAGGED_ITEM'
-  payload: DragItem | null
-}
+type MoveTaskAction = {
+  type: "MOVE_TASK";
+  payload: {
+    draggedItemId: string;
+    hoveredItemId: string;
+    sourceColumnId: string;
+    targetColumnId: string;
+  };
+};
 
-export type Action = AddListAction | AddTaskAction | MoveListAction | SetDraggedItemAction
+type SetDraggedItemAction = {
+  type: "SET_DRAGGED_ITEM";
+  payload: DragItem | null;
+};
+
+export type Action =
+  | AddListAction
+  | AddTaskAction
+  | MoveListAction
+  | SetDraggedItemAction
+  | MoveTaskAction;
 
 export const addList = (text: string): Action => {
   return {
@@ -60,9 +76,26 @@ export const moveList = (draggedId: string, hoverId: string): Action => {
   };
 };
 
-export const setDraggedItem = (draggedItem: DragItem | null):Action => {
+export const setDraggedItem = (draggedItem: DragItem | null): Action => {
   return {
     type: SET_DRAGGED_ITEM,
-    payload: draggedItem
-  }
-}
+    payload: draggedItem,
+  };
+};
+
+export const moveTask = (
+  draggedItemId: string,
+  hoveredItemId: string,
+  sourceColumnId: string,
+  targetColumnId: string
+): Action => {
+  return {
+    type: MOVE_TASK,
+    payload: {
+      draggedItemId,
+      hoveredItemId,
+      sourceColumnId,
+      targetColumnId,
+    },
+  };
+};
