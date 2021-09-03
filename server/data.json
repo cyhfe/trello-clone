@@ -1,0 +1,37 @@
+{
+  "lists": [
+    {
+      "id": "8W0RfC3rExlRwJnFltAdD",
+      "text": "todo",
+      "tasks": []
+    },
+    {
+      "id": "20FVKX2XueBxqwMf82Hvi",
+      "text": "in progress",
+      "tasks": [
+        {
+          "id": "VNqUAvqQdKDqtbNlp2XOm",
+          "text": "hello world"
+        },
+        {
+          "id": "6avgAI3VGK4C1GE8bDGs6",
+          "text": "ljhjbkj"
+        },
+        {
+          "id": "cRnKyYL0f6hzFTnC9znk8",
+          "text": "learn typescript"
+        }
+      ]
+    },
+    {
+      "id": "7YYDC8NlkrrkWqa7UVAao",
+      "text": "done",
+      "tasks": [
+        {
+          "id": "-CO5GTFBot07wF3MyDE8P",
+          "text": "coding"
+        }
+      ]
+    }
+  ]
+}

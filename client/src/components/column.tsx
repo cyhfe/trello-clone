@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useAppState } from "../state/AppStateContext";
 import Card from "./card";
 import AddNewItem from "./addNewItem";
-import { addTask, moveList } from "../state/actions";
+import { addTask, moveList, moveTask, setDraggedItem } from "../state/actions";
 import { useItemDrag } from "../utils/useItemGrag";
 import { useDrop } from "react-dnd";
 import { DragPreviewContainer } from "../styles";
@@ -38,12 +38,19 @@ const Column = ({ id, text, isPreview }: ColumnProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const { drag } = useItemDrag({ id, text, type: "COLUMN" });
   const [, drop] = useDrop({
-    accept: "COLUMN",
+    accept: ["COLUMN", "CARD"],
     hover() {
       if (!draggedItem) return;
       if (draggedItem.type === "COLUMN") {
         if (draggedItem.id === id) return;
         dispatch(moveList(draggedItem.id, id));
+        return;
+      }
+      if (draggedItem.type === "CARD") {
+        if (draggedItem.columnId === id) return;
+        if (tasks.length) return;
+        dispatch(moveTask(draggedItem.id, null, draggedItem.columnId, id));
+        dispatch(setDraggedItem({ ...draggedItem, columnId: id }));
       }
     },
   });
