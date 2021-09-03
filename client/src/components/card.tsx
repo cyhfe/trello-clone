@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 import { useAppState } from "../state/AppStateContext";
 import { DragPreviewContainer } from "../styles";
+import { isHidden } from "../utils/isHidden";
 import { useItemDrag } from "../utils/useItemGrag";
 const CardContainer = styled(DragPreviewContainer)`
   background-color: #fff;
@@ -29,9 +30,17 @@ const Card = ({ id, text, columnId, isPreview }: CardProps) => {
     columnId,
     type: "CARD",
   });
-  
-  drag(ref)
-  return <CardContainer ref={ref} isPreview={isPreview}>{text}</CardContainer>;
+
+  drag(ref);
+  return (
+    <CardContainer
+      ref={ref}
+      isPreview={isPreview}
+      isHidden={isHidden(draggedItem, "CARD", id)}
+    >
+      {text}
+    </CardContainer>
+  );
 };
 
 export default Card;

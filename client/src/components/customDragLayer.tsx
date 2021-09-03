@@ -3,6 +3,7 @@ import Column from "../components/column";
 import { CustomDragLayerContainer } from "../styles";
 import { useAppState } from "../state/AppStateContext";
 import { DragPreviewWrap } from "../styles";
+import Card from "./card";
 
 export const CustomDragLayer = () => {
   const { draggedItem } = useAppState();
@@ -19,10 +20,23 @@ export const CustomDragLayer = () => {
   //   </CustomDragLayerContainer>
   // );
   return draggedItem && currentOffset ? (
-    <CustomDragLayerContainer>
-      <DragPreviewWrap position={currentOffset}>
-        <Column id={draggedItem.id} text={draggedItem.text} isPreview />
-      </DragPreviewWrap>
-    </CustomDragLayerContainer>
+    draggedItem.type === "COLUMN" ? (
+      <CustomDragLayerContainer>
+        <DragPreviewWrap position={currentOffset}>
+          <Column id={draggedItem.id} text={draggedItem.text} isPreview />
+        </DragPreviewWrap>
+      </CustomDragLayerContainer>
+    ) : (
+      <CustomDragLayerContainer>
+        <DragPreviewWrap position={currentOffset}>
+          <Card
+            id={draggedItem.id}
+            text={draggedItem.text}
+            isPreview
+            columnId={draggedItem.columnId}
+          />
+        </DragPreviewWrap>
+      </CustomDragLayerContainer>
+    )
   ) : null;
 };
