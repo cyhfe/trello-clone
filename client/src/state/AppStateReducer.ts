@@ -3,7 +3,10 @@ import { Action } from "./actions";
 import { AppState } from "./AppStateContext";
 import { findItemIndexById, moveItem } from "../utils/arrayUtils";
 import { cloneDeep } from "lodash";
-export const appStateReducer = (state: AppState, action: Action): AppState => {
+export const appStateReducer = (
+  state: AppState,
+  action: Action
+): AppState => {
   switch (action.type) {
     case "ADD_LIST": {
       const newLists = state.lists.slice();
@@ -20,7 +23,10 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
 
     case "ADD_TASK": {
       let newLists = cloneDeep(state.lists);
-      const targetIndex = findItemIndexById(newLists, action.payload.listId);
+      const targetIndex = findItemIndexById(
+        newLists,
+        action.payload.listId
+      );
       const targetTasks = newLists[targetIndex].tasks;
       targetTasks.push({
         id: nanoid(),
@@ -52,6 +58,13 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
     }
 
     case "MOVE_TASK": {
+      const {
+        draggedItemId,
+        hoveredItemId,
+        sourceColumnId,
+        targetColumnId,
+      } = action.payload;
+
       return {
         ...state,
       };

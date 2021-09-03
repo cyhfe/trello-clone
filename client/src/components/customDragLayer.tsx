@@ -23,7 +23,11 @@ export const CustomDragLayer = () => {
     draggedItem.type === "COLUMN" ? (
       <CustomDragLayerContainer>
         <DragPreviewWrap position={currentOffset}>
-          <Column id={draggedItem.id} text={draggedItem.text} isPreview />
+          <Column
+            id={draggedItem.id}
+            text={draggedItem.text}
+            isPreview
+          />
         </DragPreviewWrap>
       </CustomDragLayerContainer>
     ) : (
@@ -32,8 +36,8 @@ export const CustomDragLayer = () => {
           <Card
             id={draggedItem.id}
             text={draggedItem.text}
-            isPreview
             columnId={draggedItem.columnId}
+            isPreview
           />
         </DragPreviewWrap>
       </CustomDragLayerContainer>

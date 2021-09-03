@@ -7,6 +7,9 @@ export const isHidden = (
   isPreview?: boolean
 ): boolean => {
   return Boolean(
-    !isPreview && draggedItem && draggedItem.id === id && draggedItem.type === itemType
+    !isPreview &&
+      draggedItem &&
+      draggedItem.id === id &&
+      draggedItem.type === itemType
   );
 };
