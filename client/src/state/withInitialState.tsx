@@ -23,8 +23,10 @@ export function withInitialState<TProps>(
         try {
           const data = await load();
           setLists(data.lists);
-        } catch (e: any) {
-          setError(e);
+        } catch (e) {
+          if (e instanceof Error) {
+            setError(e);
+          }
         }
         setIsLoading(false);
       };
