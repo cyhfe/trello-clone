@@ -11,7 +11,7 @@ BUILD_PATH=../server/public
 使用 fetch 请求数据，使用绝对地址（本地和发布环境要区分）：
 
 ```
-REACT_APP_API_URL=http://localhost:3000
+REACT_APP_API_URL=https://cyh-trello-clone.herokuapp.com
 ```
 
 环境变量配置详见文档：[https://create-react-app.dev/docs/adding-custom-environment-variables/](https://create-react-app.dev/docs/adding-custom-environment-variables/)
@@ -39,3 +39,18 @@ web:npm run start
 ```
 heroku git:remote -a cyh-trello-clone
 ```
+
+5. 因为我的项目分为 client 和 server，发布的是 server 子目录
+
+```bash
+git subtree push --prefix server heroku main
+```
+
+6. 查看日志
+
+```bash
+heroku logs --tail
+```
+
+7. 注意事项
+   node 的环境变量需要在 heroku 网站上配置
