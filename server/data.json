@@ -1,26 +1,16 @@
 {
   "lists": [
     {
-      "id": "8W0RfC3rExlRwJnFltAdD",
-      "text": "todo",
-      "tasks": [
-        {
-          "id": "I1vH5d1THjAqAwDnyvjFI",
-          "text": "idoshgsf"
-        },
-        {
-          "id": "6avgAI3VGK4C1GE8bDGs6",
-          "text": "ljhjbkj"
-        }
-      ]
-    },
-    {
       "id": "20FVKX2XueBxqwMf82Hvi",
       "text": "in progress",
       "tasks": [
         {
-          "id": "VNqUAvqQdKDqtbNlp2XOm",
-          "text": "hello world"
+          "id": "ko86DdqC7zX6mIgMjOliI",
+          "text": "node"
+        },
+        {
+          "id": "qDV6caNf6ImjPzr8Uz4mQ",
+          "text": "的萨阿德说"
         }
       ]
     },
@@ -29,47 +19,26 @@
       "text": "done",
       "tasks": [
         {
-          "id": "-CO5GTFBot07wF3MyDE8P",
+          "id": "CgSgC2Mo2yGcLBeqIDiVa",
+          "text": "fasdfasd"
+        },
+        {
+          "id": "VNqUAvqQdKDqtbNlp2XOm",
+          "text": "hello world"
+        }
+      ]
+    },
+    {
+      "id": "8YqqML_zSthD_Cs48_a87",
+      "text": "todo",
+      "tasks": [
+        {
+          "id": "ILNiHiHD__Hj-LCTz6yxp",
           "text": "coding"
         },
         {
           "id": "cRnKyYL0f6hzFTnC9znk8",
           "text": "learn typescript"
-        }
-      ]
-    },
-    {
-      "id": "6ASgslN8qEIDzPJBALwaN",
-      "text": "32e",
-      "tasks": []
-    },
-    {
-      "id": "61i8gUkwQQXv4z2aHlz8x",
-      "text": "23",
-      "tasks": []
-    },
-    {
-      "id": "8YqqML_zSthD_Cs48_a87",
-      "text": "2434",
-      "tasks": []
-    },
-    {
-      "id": "zD6F1m2E5J09AMmHjC6zH",
-      "text": "duhfiudf",
-      "tasks": [
-        {
-          "id": "2-ZW4o332n_bVdLtQkUYO",
-          "text": "fjnfldng"
-        }
-      ]
-    },
-    {
-      "id": "CXhXYXcgDhOW4LB3-6QOt",
-      "text": "sovjsv",
-      "tasks": [
-        {
-          "id": "5fwURuZub8wL_wpWVdx69",
-          "text": "jcbvsv"
         }
       ]
     }

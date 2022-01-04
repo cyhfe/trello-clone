@@ -1,13 +1,16 @@
-import {  List } from "./state/AppStateContext";
+import { List } from './state/AppStateContext';
 type Payload = {
   lists: List[];
 };
+
+const API_URL = process.env.REACT_APP_API_URL;
+
 export const save = (payload: Payload) => {
-  return fetch("/api/save", {
-    method: "post",
+  return fetch(`${API_URL}/api/save`, {
+    method: 'post',
     headers: {
-      Accept: "application/json",
-      "Content-type": "application/json",
+      Accept: 'application/json',
+      'Content-type': 'application/json',
     },
     body: JSON.stringify(payload),
   }).then((res) => {
@@ -16,9 +19,9 @@ export const save = (payload: Payload) => {
 };
 
 export const load = () => {
-  return fetch("/api/load", {
-    method: "get",
+  return fetch(`${API_URL}/api/load`, {
+    method: 'get',
   }).then((res) => {
-    return res.json() as Promise<Payload>
+    return res.json() as Promise<Payload>;
   });
 };
